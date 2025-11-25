@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 5 - JavaScript Programs</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h2 { color: darkblue; }
+    .task { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px; }
+    .output { margin-top: 10px; color: green; font-weight: bold; }
+    input, textarea { margin: 5px 0; padding: 5px; }
+    button { margin-top: 10px; padding: 5px 10px; }
+  </style>
+</head>
+<body>
+
+  <h1>Assignment 5 - JavaScript (User Inputs)</h1>
+
+  <!-- i. Arithmetic Operations -->
+  <div class="task">
+    <h2>Task i: Arithmetic Operations</h2>
+    <label>First Number: </label><input type="number" id="num1"><br>
+    <label>Second Number: </label><input type="number" id="num2"><br>
+    <button onclick="arithmeticOps()">Calculate</button>
+    <div id="output1" class="output"></div>
+  </div>
+
+  <!-- ii. Array Operations -->
+  <div class="task">
+    <h2>Task ii: Array Operations</h2>
+    <label>Enter numbers (comma separated):</label><br>
+    <input type="text" id="arrayInput" placeholder="e.g. 12,5,98,34,7"><br>
+    <button onclick="arrayOps()">Process Array</button>
+    <div id="output2" class="output"></div>
+  </div>
+
+  <!-- iii. Form Validation -->
+  <div class="task">
+    <h2>Task iii: Form Validation</h2>
+    <form id="myForm" onsubmit="validateForm(); return false;">
+      Name: <input type="text" id="name"><br><br>
+      Email: <input type="text" id="email"><br><br>
+      Age: <input type="text" id="age"><br><br>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- iv. Student Object -->
+  <div class="task">
+    <h2>Task iv: Student Object</h2>
+    <label>Name: </label><input type="text" id="stuName"><br>
+    <label>Age: </label><input type="number" id="stuAge"><br>
+    <label>Grade: </label><input type="text" id="stuGrade"><br>
+    <label>Class: </label><input type="text" id="stuClass"><br>
+    <button onclick="studentObj()">Show Student Info</button>
+    <div id="output4" class="output"></div>
+  </div>
+
+  <!-- v. Array Methods -->
+  <div class="task">
+    <h2>Task v: Array Methods (map, filter, reduce)</h2>
+    <label>Enter numbers (comma separated):</label><br>
+    <input type="text" id="arrayMethodsInput" placeholder="e.g. 1,2,3,4,5,6,7,8,9"><br>
+    <button onclick="processArray()">Run</button>
+    <div id="output5" class="output"></div>
+  </div>
+
+
+  <script>
+    // Task i: Arithmetic
+    function arithmeticOps() {
+      let num1 = parseFloat(document.getElementById("num1").value);
+      let num2 = parseFloat(document.getElementById("num2").value);
+
+      if (isNaN(num1) || isNaN(num2)) {
+        document.getElementById("output1").innerHTML = "Please enter valid numbers!";
+        return;
+      }
+
+      let result = `
+        Sum: ${num1 + num2}<br>
+        Difference: ${num1 - num2}<br>
+        Product: ${num1 * num2}<br>
+        Quotient: ${num2 !== 0 ? (num1 / num2) : "Division by zero not allowed"}
+      `;
+      document.getElementById("output1").innerHTML = result;
+    }
+
+    // Task ii: Array
+    function arrayOps() {
+      let input = document.getElementById("arrayInput").value.trim();
+      if (input === "") {
+        document.getElementById("output2").innerHTML = "Please enter some numbers!";
+        return;
+      }
+      let arr = input.split(",").map(Number);
+
+      if (arr.some(isNaN)) {
+        document.getElementById("output2").innerHTML = "Invalid array input!";
+        return;
+      }
+
+      let largest = Math.max(...arr);
+      let smallest = Math.min(...arr);
+      let asc = arr.slice().sort((a, b) => a - b);
+      let desc = arr.slice().sort((a, b) => b - a);
+
+      let result = `
+        Original: ${arr}<br>
+        Largest: ${largest}<br>
+        Smallest: ${smallest}<br>
+        Ascending: ${asc}<br>
+        Descending: ${desc}
+      `;
+      document.getElementById("output2").innerHTML = result;
+    }
+
+    // Task iii: Form Validation
+    function validateForm() {
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let age = parseInt(document.getElementById("age").value);
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+      if (name === "") {
+        alert("Name cannot be empty!");
+        return;
+      }
+      if (!email.match(emailPattern)) {
+        alert("Invalid email format!");
+        return;
+      }
+      if (isNaN(age) || age < 18 || age > 100) {
+        alert("Age must be between 18 and 100!");
+        return;
+      }
+      alert("Form submitted successfully!");
+    }
+
+    // Task iv: Student Object
+    function studentObj() {
+      let student = {
+        name: document.getElementById("stuName").value.trim(),
+        age: parseInt(document.getElementById("stuAge").value),
+        grade: document.getElementById("stuGrade").value.trim()
+      };
+
+      let stuClass = document.getElementById("stuClass").value.trim();
+      if (stuClass !== "") {
+        student.class = stuClass;
+      }
+
+      let result = "";
+      for (let key in student) {
+        result += key + ": " + student[key] + "<br>";
+      }
+      document.getElementById("output4").innerHTML = result;
+    }
+
+    // Task v: Array Methods
+    function processArray() {
+      let input = document.getElementById("arrayMethodsInput").value.trim();
+      if (input === "") {
+        document.getElementById("output5").innerHTML = "Please enter some numbers!";
+        return;
+      }
+      let arr = input.split(",").map(Number);
+
+      if (arr.some(isNaN)) {
+        document.getElementById("output5").innerHTML = "Invalid array input!";
+        return;
+      }
+
+      let evens = arr.filter(num => num % 2 === 0);
+      let multiplied = evens.map(num => num * 2);
+      let sum = multiplied.reduce((acc, val) => acc + val, 0);
+
+      let result = `
+        Original: ${arr}<br>
+        Even Numbers: ${evens}<br>
+        After *2: ${multiplied}<br>
+        Sum: ${sum}
+      `;
+      document.getElementById("output5").innerHTML = result;
+    }
+  </script>
+
+</body>
+</html>
