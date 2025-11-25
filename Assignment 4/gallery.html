@@ -1,0 +1,105 @@
+<!-- gallery.html (Enhanced Photo Gallery) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery - College Fest 2025</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    .gallery-heading {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #2575fc;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .gallery-item:hover .caption {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Photo Gallery</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="register.html">Register</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <div class="gallery-container">
+      <h2 class="gallery-heading">Memories from Previous Years</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="pics\Gemini_Generated_Image_bdbgqwbdbgqwbdbg.png" alt="Hackathon">
+          <div class="caption">Hackathon 2023</div>
+        </div>
+        <div class="gallery-item">
+          <img src="pics\Gemini_Generated_Image_yfqokhyfqokhyfqo.png" alt="Dance Battle">
+          <div class="caption">Dance Battle Finals</div>
+        </div>
+        <div class="gallery-item">
+          <img src="pics\Gemini_Generated_Image_bdbgqwbdbgqwbdbg (2).png" alt="Robotics">
+          <div class="caption">Robotics Challenge</div>
+        </div>
+        <div class="gallery-item">
+          <img src="pics\Gemini_Generated_Image_bdbgqwbdbgqwbdbg (3).png" alt="Bands">
+          <div class="caption">Battle of Bands</div>
+        </div>
+        <div class="gallery-item">
+          <img src="pics\Gemini_Generated_Image_bdbgqwbdbgqwbdbg (4).png" alt="Quiz">
+          <div class="caption">Quiz Mania</div>
+        </div>
+        <div class="gallery-item">
+          <img src="pics\Gemini_Generated_Image_bdbgqwbdbgqwbdbg (5).png" alt="Cultural Night">
+          <div class="caption">Cultural Night</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

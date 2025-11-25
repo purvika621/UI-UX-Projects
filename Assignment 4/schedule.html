@@ -1,0 +1,119 @@
+<!-- schedule.html (Schedule/Results Page with Enhanced Design) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Schedule - College Fest 2025</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .schedule-container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    .schedule-heading {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #2575fc;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    table th, table td {
+      padding: 14px;
+      text-align: center;
+    }
+    table th {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      font-size: 16px;
+    }
+    table tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    table tr:hover {
+      background: #eef5ff;
+      transition: 0.3s;
+    }
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .tech { background: #e1f0ff; color: #2575fc; }
+    .cultural { background: #ffe0f0; color: #d81b60; }
+    .music { background: #fff3cd; color: #856404; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Event Schedule</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="register.html">Register</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <div class="schedule-container">
+      <h2 class="schedule-heading">3-Day Fest Program</h2>
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Event</th>
+          <th>Category</th>
+          <th>Time</th>
+          <th>Venue</th>
+        </tr>
+        <tr>
+          <td>15 Sept</td>
+          <td>Hackathon</td>
+          <td><span class="tag tech">Technical</span></td>
+          <td>10 AM - Next Day</td>
+          <td>Innovation Lab</td>
+        </tr>
+        <tr>
+          <td>15 Sept</td>
+          <td>Debate Competition</td>
+          <td><span class="tag cultural">Literary</span></td>
+          <td>3 PM - 6 PM</td>
+          <td>Seminar Hall 2</td>
+        </tr>
+        <tr>
+          <td>16 Sept</td>
+          <td>Dance Battle</td>
+          <td><span class="tag cultural">Cultural</span></td>
+          <td>5 PM - 8 PM</td>
+          <td>Auditorium</td>
+        </tr>
+        <tr>
+          <td>16 Sept</td>
+          <td>Quiz Mania</td>
+          <td><span class="tag tech">Quiz</span></td>
+          <td>2 PM - 4 PM</td>
+          <td>Lecture Theatre 1</td>
+        </tr>
+        <tr>
+          <td>17 Sept</td>
+          <td>Battle of Bands</td>
+          <td><span class="tag music">Music</span></td>
+          <td>7 PM - 10 PM</td>
+          <td>Open Air Theatre</td>
+        </tr>
+      </table>
+    </div>
+  </main>
+</body>
+</html>
