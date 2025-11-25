@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f0f2f5;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e3a5f;
+      margin: 20px 0;
+      font-size: 2.5em;
+    }
+
+    /* Form styling */
+    form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    
+    input {
+      width: 200px;
+    }
+    textarea {
+      width: 250px;
+      height: 60px;
+      resize: none;
+    }
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      background: #1e90ff;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s ease;
+    }
+    button:hover {
+      background: #0b6dc4;
+    }
+
+    /* Task list */
+    #taskList {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .task {
+      background: #fff;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+    .task:hover {
+      transform: scale(1.01);
+    }
+
+    .task h3 {
+      margin: 0;
+      color: #1e3a5f;
+    }
+    .task p {
+      margin: 5px 0 10px;
+      color: #555;
+    }
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    /* Task buttons */
+    .task button {
+      margin-right: 5px;
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+    .complete-btn { background: #28a745; }
+    .complete-btn:hover { background: #218838; }
+
+    .edit-btn { background: #ffc107; color: black; }
+    .edit-btn:hover { background: #e0a800; }
+
+    .delete-btn { background: #dc3545; }
+    .delete-btn:hover { background: #c82333; }
+  </style>
+</head>
+<body>
+  <h1>To-Do List</h1>
+
+  <form id="taskForm">
+    <input type="text" id="taskTitle" placeholder="Task Title" required>
+    <textarea id="taskDesc" placeholder="Task Description" required></textarea>
+    <button type="submit">Add Task</button>
+  </form>
+
+  <div id="taskList"></div>
+
+  <script>
+    const taskForm = document.getElementById("taskForm");
+    const taskList = document.getElementById("taskList");
+
+    taskForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const title = document.getElementById("taskTitle").value.trim();
+      const desc = document.getElementById("taskDesc").value.trim();
+      if (title === "" || desc === "") return;
+      addTask(title, desc);
+      taskForm.reset();
+    });
+
+    function addTask(title, desc) {
+      const taskDiv = document.createElement("div");
+      taskDiv.classList.add("task");
+
+      let titleEl = document.createElement("h3");
+      titleEl.textContent = title;
+
+      let descEl = document.createElement("p");
+      descEl.textContent = desc;
+
+      // Buttons
+      let completeBtn = document.createElement("button");
+      completeBtn.textContent = "Mark as Completed";
+      completeBtn.className = "complete-btn";
+      completeBtn.onclick = function() {
+        titleEl.classList.toggle("completed");
+        descEl.classList.toggle("completed");
+        completeBtn.textContent =
+          titleEl.classList.contains("completed") ? "Mark as Incomplete" : "Mark as Completed";
+      };
+
+      let editBtn = document.createElement("button");
+      editBtn.textContent = "Edit";
+      editBtn.className = "edit-btn";
+      editBtn.onclick = function() {
+        if (editBtn.textContent === "Edit") {
+          let titleInput = document.createElement("input");
+          titleInput.value = titleEl.textContent;
+          let descInput = document.createElement("textarea");
+          descInput.value = descEl.textContent;
+          taskDiv.replaceChild(titleInput, titleEl);
+          taskDiv.replaceChild(descInput, descEl);
+          editBtn.textContent = "Save";
+          titleEl = titleInput;
+          descEl = descInput;
+        } else {
+          let newTitle = document.createElement("h3");
+          newTitle.textContent = titleEl.value;
+          let newDesc = document.createElement("p");
+          newDesc.textContent = descEl.value;
+          taskDiv.replaceChild(newTitle, titleEl);
+          taskDiv.replaceChild(newDesc, descEl);
+          editBtn.textContent = "Edit";
+          titleEl = newTitle;
+          descEl = newDesc;
+        }
+      };
+
+      let deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.className = "delete-btn";
+      deleteBtn.onclick = function() {
+        taskList.removeChild(taskDiv);
+      };
+
+      taskDiv.appendChild(titleEl);
+      taskDiv.appendChild(descEl);
+      taskDiv.appendChild(completeBtn);
+      taskDiv.appendChild(editBtn);
+      taskDiv.appendChild(deleteBtn);
+
+      taskList.appendChild(taskDiv);
+    }
+  </script>
+</body>
+</html>
