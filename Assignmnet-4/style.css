@@ -1,0 +1,130 @@
+/* Global element selectors */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f6f9;
+  color: #333;
+}
+
+header {
+  background: #004080;
+  color: white;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+/* ID selector example */
+#home-intro {
+  /* extra spacing handled in index page, just here as an ID example */
+}
+
+/* Heading styling + pseudo-element */
+header h1 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+header h1::after {
+  content: "";
+  display: block;
+  margin: 8px auto 0;
+  width: 90px;
+  height: 3px;
+  background: #ffcc00;
+  border-radius: 999px;
+}
+
+main {
+  padding: 20px;
+}
+
+/* Flexbox nav */
+nav {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Class & pseudo-classes */
+nav a {
+  text-decoration: none;
+  color: #ffcc00;
+  font-weight: bold;
+  font-size: 15px;
+  position: relative;
+  padding: 4px 2px;
+  transition: color 0.3s;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  color: #ffffff;
+}
+
+/* underline animation using pseudo-element */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.3s;
+}
+
+nav a:hover::after,
+nav a:focus-visible::after {
+  width: 100%;
+}
+
+/* Attribute selector – highlight register link */
+nav a[href*="register"] {
+  border: 1px solid #ffcc00;
+  border-radius: 999px;
+  padding: 4px 14px;
+}
+
+/* Button/CTA class */
+button,
+.cta {
+  background: #ffcc00;
+  color: #333;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: background 0.3s, transform 0.1s;
+}
+
+button:hover,
+.cta:hover {
+  background: #e6b800;
+  transform: translateY(-1px);
+}
+
+/* Simple responsive tweaks */
+@media (max-width: 600px) {
+  header {
+    padding: 16px 8px;
+  }
+
+  header h1 {
+    font-size: 26px;
+  }
+
+  nav {
+    gap: 6px;
+  }
+
+  main {
+    padding: 14px;
+  }
+}

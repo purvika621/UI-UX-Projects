@@ -1,0 +1,100 @@
+<!-- register.html (Enhanced Registration Form) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - College Fest 2025</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .form-container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2575fc;
+    }
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border .3s;
+    }
+    form input:focus, form select:focus {
+      border-color: #2575fc;
+      outline: none;
+      box-shadow: 0 0 5px rgba(37,117,252,0.3);
+    }
+    .form-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      font-size: 16px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .3s;
+    }
+    .form-btn:hover {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Participant Registration</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="register.html">Register</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <div class="form-container">
+      <h2>Register for an Event</h2>
+      <form>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+        <label for="event">Select Event</label>
+        <select id="event" name="event">
+          <option>Hackathon</option>
+          <option>Robotics</option>
+          <option>Debate</option>
+          <option>Dance Battle</option>
+          <option>Battle of Bands</option>
+          <option>Quiz Mania</option>
+        </select>
+
+        <label for="college">College Name</label>
+        <input type="text" id="college" name="college" placeholder="Enter your college name" required>
+
+        <button type="submit" class="form-btn">Submit Registration</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
